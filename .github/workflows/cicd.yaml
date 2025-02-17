@@ -9,6 +9,6 @@ jobs:
         with:
           python-version: '3.13'
      
-      - run: pip install flash pytest
+      - run: pip install flask pytest
      
       - run: pytest
