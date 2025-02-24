@@ -56,4 +56,4 @@ jobs:
           sudo apt-get update
           cd /home/yc-user/test_cicd
           docker compose down
-          docker compose up
+          docker compose up -d 
