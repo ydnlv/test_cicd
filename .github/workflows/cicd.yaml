@@ -17,18 +17,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: executing remote ssh command using password
-      uses: appleboy/ssh-action@1.2.1
-      with:
-        host: $(( address.student_key))
-        username: yc-user
-        password: $(( address.student_key ))
-        script: |
-          sudo apt-get update
-          cd /home/yc-user/test_cicd
-          docker compose down
-          docker compose up
+        uses: appleboy/ssh-action@1.2.1
+        with:
+          host: ${{ secrets.ADDRESS }}
+          username: yc-user
+          key: ${{ secrets.STUDENT_KEY }}
+          passphrase: 123
+          script: |
+            sudo apt-get update
+            cd /home/yc-user/test_cicd
+            docker compose down
+            docker compose up
 
   build:
+    needs: setup
     runs-on: ubuntu-latest
 
     permissions:
