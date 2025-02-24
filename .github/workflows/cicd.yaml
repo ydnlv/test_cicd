@@ -53,7 +53,7 @@ jobs:
         key: ${{ secrets.STUDENT_KEY }}
         passphrase: 123
         script: |
-          sudo apt-get update
           cd /home/yc-user/test_cicd
+          docker pull ghcr.io/ydnlv/test_cicd:main
           docker compose down
           docker compose up -d 
